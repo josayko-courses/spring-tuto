@@ -1,12 +1,12 @@
 package com.josayko.backend.service;
 
-import com.josayko.backend.data.ToDo;
-import com.josayko.backend.exception.EntityNotFoundException;
+import com.josayko.backend.model.ToDo;
 import com.josayko.backend.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ToDoService {
@@ -18,8 +18,8 @@ public class ToDoService {
         return toDoRepository.findAll();
     }
 
-    public ToDo findById(String id) {
-        return toDoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    public Optional<ToDo> findById(String id) {
+        return toDoRepository.findById(id);
     }
 
     public ToDo save(ToDo toDo) {

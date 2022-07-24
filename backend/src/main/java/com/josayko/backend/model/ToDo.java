@@ -1,4 +1,4 @@
-package com.josayko.backend.data;
+package com.josayko.backend.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("todos")
 public class ToDo {
 
+    /***** Attributes *****/
     @Id
     private String id;
 
@@ -18,6 +19,7 @@ public class ToDo {
         this.completed = completed;
     }
 
+    /***** Getters *****/
     public String getId() {
         return id;
     }
@@ -28,6 +30,15 @@ public class ToDo {
 
     public Boolean getCompleted() {
        return completed;
+    }
+
+    /***** Setters *****/
+    public void setCompleted(Boolean value) {
+        this.completed = value;
+    }
+
+    public void setTitle(String newTitle) {
+        this.title = newTitle;
     }
 
 }
