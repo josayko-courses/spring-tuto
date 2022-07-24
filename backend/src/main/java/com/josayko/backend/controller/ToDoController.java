@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public class ToDoController {
 
     /**
      * Get all the todos
+     *
      * @return all the todos
      */
     @GetMapping
@@ -28,6 +30,7 @@ public class ToDoController {
 
     /**
      * Get a todo with id
+     *
      * @param id String
      * @return the todo or 404 not found
      */
@@ -44,22 +47,24 @@ public class ToDoController {
 
     /**
      * Create a new todo
+     *
      * @param toDo the todo details
      * @return the new todo
      */
     @PostMapping
-    public ResponseEntity<ToDo> create(@RequestBody ToDo toDo) {
+    public ResponseEntity<ToDo> create(@Valid @RequestBody ToDo toDo) {
         return new ResponseEntity<>(toDoService.save(toDo), HttpStatus.OK);
     }
 
     /**
      * Update an existing todo
-     * @param id the todo to update
+     *
+     * @param id   the todo to update
      * @param toDo new details to update
      * @return the updated todo
      */
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody ToDo toDo) {
+    public ResponseEntity<?> update(@PathVariable("id") String id, @Valid @RequestBody ToDo toDo) {
         Optional<ToDo> todoData = toDoService.findById(id);
 
         if (todoData.isPresent()) {
@@ -74,6 +79,7 @@ public class ToDoController {
 
     /**
      * Delete a todo with id
+     *
      * @param id todo to delete
      * @return status code 204
      */
