@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 
 @Document("todos")
 public class ToDo {
+    /***** Constructor *****/
+    public ToDo() {
+    }
 
     /***** Attributes *****/
     @Id
@@ -34,7 +37,7 @@ public class ToDo {
     }
 
     public Boolean getCompleted() {
-       return completed;
+        return completed;
     }
 
     /***** Setters *****/
